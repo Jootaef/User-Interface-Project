@@ -1,0 +1,268 @@
+{
+  "id": "smoke-test-suite",
+  "version": "2.0",
+  "name": "Smoke Test",
+  "url": "http://localhost:5500/teton/1.6/",
+  "tests": [
+    {
+      "id": "test-1-logo-header-title",
+      "name": "Test 1: Logo Header and Title",
+      "commands": [
+        {
+          "id": "open-homepage",
+          "command": "open",
+          "target": "http://localhost:5500/teton/1.6/index.html",
+          "value": ""
+        },
+        {
+          "id": "verify-logo",
+          "command": "assertElementPresent",
+          "target": "css=.header-logo img",
+          "value": ""
+        },
+        {
+          "id": "verify-logo-alt",
+          "command": "assertAttribute",
+          "target": "css=.header-logo img@alt",
+          "value": "Teton Chamber of Commerce Logo"
+        },
+        {
+          "id": "verify-heading1",
+          "command": "assertText",
+          "target": "css=.header-title h1",
+          "value": "Teton Idaho"
+        },
+        {
+          "id": "verify-heading2",
+          "command": "assertText",
+          "target": "css=.header-title h2",
+          "value": "Chamber of Commerce"
+        },
+        {
+          "id": "verify-title",
+          "command": "assertTitle",
+          "target": "",
+          "value": "Teton Idaho CoC"
+        }
+      ]
+    },
+    {
+      "id": "test-2-spotlights-join-feature",
+      "name": "Test 2: Home Page - Spotlights and Join Feature",
+      "commands": [
+        {
+          "id": "open-homepage",
+          "command": "open",
+          "target": "http://localhost:5500/teton/1.6/index.html",
+          "value": ""
+        },
+        {
+          "id": "wait-for-spotlights",
+          "command": "waitForElementPresent",
+          "target": "css=.main-spotlight",
+          "value": "10000"
+        },
+        {
+          "id": "verify-join-button",
+          "command": "assertElementPresent",
+          "target": "css=.a-button",
+          "value": ""
+        },
+        {
+          "id": "verify-join-text",
+          "command": "assertText",
+          "target": "css=.a-button",
+          "value": "Join Us"
+        },
+        {
+          "id": "click-join",
+          "command": "click",
+          "target": "css=.a-button",
+          "value": ""
+        },
+        {
+          "id": "wait-for-join-page",
+          "command": "waitForUrl",
+          "target": "**/join.html",
+          "value": "10000"
+        },
+        {
+          "id": "verify-join-url",
+          "command": "assertUrl",
+          "target": "**/join.html",
+          "value": ""
+        }
+      ]
+    },
+    {
+      "id": "test-3-directory-grid-list",
+      "name": "Test 3: Directory Grid and List Feature",
+      "commands": [
+        {
+          "id": "open-directory",
+          "command": "open",
+          "target": "http://localhost:5500/teton/1.6/directory.html",
+          "value": ""
+        },
+        {
+          "id": "wait-for-directory-data",
+          "command": "waitForElementPresent",
+          "target": "css=.directory-cards",
+          "value": "10000"
+        },
+        {
+          "id": "click-grid-button",
+          "command": "click",
+          "target": "id=directory-grid",
+          "value": ""
+        },
+        {
+          "id": "wait-for-teton-turf-grid",
+          "command": "waitForElementPresent",
+          "target": "xpath=//p[contains(text(), 'Teton Turf and Tree')]",
+          "value": "10000"
+        },
+        {
+          "id": "click-list-button",
+          "command": "click",
+          "target": "id=directory-list",
+          "value": ""
+        },
+        {
+          "id": "wait-for-teton-turf-list",
+          "command": "waitForElementPresent",
+          "target": "xpath=//p[contains(text(), 'Teton Turf and Tree')]",
+          "value": "10000"
+        }
+      ]
+    },
+    {
+      "id": "test-4-join-page-data-entry",
+      "name": "Test 4: Join Page Data Entry",
+      "commands": [
+        {
+          "id": "open-join-page",
+          "command": "open",
+          "target": "http://localhost:5500/teton/1.6/join.html",
+          "value": ""
+        },
+        {
+          "id": "verify-first-name-field",
+          "command": "assertElementPresent",
+          "target": "name=fname",
+          "value": ""
+        },
+        {
+          "id": "fill-first-name",
+          "command": "type",
+          "target": "name=fname",
+          "value": "John"
+        },
+        {
+          "id": "fill-last-name",
+          "command": "type",
+          "target": "name=lname",
+          "value": "Doe"
+        },
+        {
+          "id": "fill-business-name",
+          "command": "type",
+          "target": "name=bizname",
+          "value": "Test Business"
+        },
+        {
+          "id": "fill-title",
+          "command": "type",
+          "target": "name=biztitle",
+          "value": "Manager"
+        },
+        {
+          "id": "click-next-step",
+          "command": "click",
+          "target": "css=input[value='Next Step']",
+          "value": ""
+        },
+        {
+          "id": "wait-for-step2",
+          "command": "waitForUrl",
+          "target": "**/join-step2.html",
+          "value": "10000"
+        },
+        {
+          "id": "verify-step2-url",
+          "command": "assertUrl",
+          "target": "**/join-step2.html",
+          "value": ""
+        }
+      ]
+    },
+    {
+      "id": "test-5-admin-login-error",
+      "name": "Test 5: Admin Page Username/Password",
+      "commands": [
+        {
+          "id": "open-admin-page",
+          "command": "open",
+          "target": "http://localhost:5500/teton/1.6/admin.html",
+          "value": ""
+        },
+        {
+          "id": "verify-username-field",
+          "command": "assertElementPresent",
+          "target": "id=username",
+          "value": ""
+        },
+        {
+          "id": "fill-wrong-username",
+          "command": "type",
+          "target": "id=username",
+          "value": "wronguser"
+        },
+        {
+          "id": "fill-wrong-password",
+          "command": "type",
+          "target": "id=password",
+          "value": "wrongpass"
+        },
+        {
+          "id": "click-login",
+          "command": "click",
+          "target": "css=input[value='Login']",
+          "value": ""
+        },
+        {
+          "id": "wait-for-error-message",
+          "command": "waitForElementPresent",
+          "target": "css=.errorMessage",
+          "value": "10000"
+        },
+        {
+          "id": "verify-error-message",
+          "command": "assertText",
+          "target": "css=.errorMessage",
+          "value": "*Invalid username and password*"
+        }
+      ]
+    }
+  ],
+  "suites": [
+    {
+      "id": "smoke-test-suite",
+      "name": "Smoke Test Suite",
+      "persistSession": false,
+      "parallel": false,
+      "timeout": 30000,
+      "tests": [
+        "test-1-logo-header-title",
+        "test-2-spotlights-join-feature",
+        "test-3-directory-grid-list",
+        "test-4-join-page-data-entry",
+        "test-5-admin-login-error"
+      ]
+    }
+  ],
+  "urls": [
+    "http://localhost:5500/teton/1.6/"
+  ],
+  "plugins": []
+}
